@@ -7,6 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CommonServiceLocator" Version="2.0.5" />
     <PackageReference Include="MaterialDesignThemes" Version="3.0.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.2" />

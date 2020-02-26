@@ -1,5 +1,7 @@
 ﻿using API.Model.Data;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Messaging;
+using GUI.Messages;
 using System;
 
 namespace GUI.ViewModel
@@ -9,6 +11,8 @@ namespace GUI.ViewModel
         public SomethingViewModel(Something something)
         {
             Source = something;
+
+            PropertyChanged += (s, e) => Messenger.Default.Send(new UpdateSomethingMessage(Source));
         }
 
         public Something Source { get; }
@@ -24,7 +28,6 @@ namespace GUI.ViewModel
                 RaisePropertyChanged();
             } 
         }
-
 
         public string Description
         {

@@ -3,5 +3,9 @@
                     xmlns:local="clr-namespace:GUI.Localization"
                     xmlns:v="clr-namespace:System;assembly=mscorlib">
 
+    <v:String x:Key="Add">ADD</v:String>
+    <v:String x:Key="Delete">DELETE</v:String>
     <v:String x:Key="ProjectName">WPF CORE 3.1</v:String>
+    <v:String x:Key="SomethingList">List of something</v:String>
+    <v:String x:Key="Description">Description</v:String>
 </ResourceDictionary>

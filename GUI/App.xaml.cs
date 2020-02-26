@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
-using GUI.Model;
-using GUI.ViewModel;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Windows;
 
 namespace GUI
 {
@@ -20,25 +15,19 @@ namespace GUI
 
         public App()
         {
-            var serviceCollection = new ServiceCollection();
-            ConfigureServices(serviceCollection);
-            _serviceProvider = serviceCollection.BuildServiceProvider();
-        }
+            ServiceCollection services = new ServiceCollection();
 
-        private void ConfigureServices(IServiceCollection services)
-        {            
-            services.AddSingleton<MainWindow>();
-            services.AddSingleton<SomethingAPIClient>();
+            Startup startup = new Startup();
+            startup.ConfigureServices(services);
+
+            _serviceProvider = services.BuildServiceProvider();
         }
 
         private void OnStartup(object sender, StartupEventArgs e)
         {
-            var mainWindow = _serviceProvider.GetService<MainWindow>();
-            var api = _serviceProvider.GetService<SomethingAPIClient>();
+            var window = _serviceProvider.GetService<MainWindow>();
 
-            mainWindow.DataContext = new MainWindowViewModel(api);
-
-            mainWindow.Show();
+            window.Show();
         }
     }
 }
