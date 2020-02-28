@@ -104,8 +104,8 @@
             <TextBox
                 Style="{StaticResource MultiLine}"
                 materialDesign:HintAssist.Hint="{DynamicResource Description}"
-                Text="{Binding Description, UpdateSourceTrigger=LostFocus}">
-            </TextBox>
+                Text="{Binding Description, UpdateSourceTrigger=LostFocus}" />
+
         </DockPanel>
     </GroupBox>
 </UserControl>

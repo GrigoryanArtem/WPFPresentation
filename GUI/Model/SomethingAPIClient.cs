@@ -8,7 +8,7 @@ namespace GUI.Model
 {
     public class SomethingAPIClient
     {
-        RestClient _client;
+        private readonly RestClient _client;
 
         public SomethingAPIClient(string url)
         {
@@ -29,9 +29,7 @@ namespace GUI.Model
             var request = new RestRequest(ApiClientConstants.SomethingApi, Method.POST, DataFormat.Json);            
             request.AddParameter(ApiClientConstants.JsonParameter, body, ParameterType.RequestBody);
 
-            var resp = await _client.PostAsync< Something>(request);
-
-            return resp;
+            return await _client.PostAsync<Something>(request); ;
         }
 
         public async Task DeleteSomething(Something something)
